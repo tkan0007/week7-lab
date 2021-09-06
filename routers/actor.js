@@ -72,8 +72,9 @@ module.exports = {
                 });
             })
         });
+    },
 
-        // why it does not work?
+            // why it does not work?
         /*
             addMovie: function (req, res) {
             Actor.findOne({ _id: req.params.id })
@@ -94,10 +95,36 @@ module.exports = {
                 });
             })
         });
-
-
-
         */
 
+        /* lab task 2 */
+        // does it mean delete the all movies related to the actor?
+
+        /* lab task 3 */
+
+    removeMovie: function(req,res){
+        Actor.findOne({ _id: req.params.aId }, function (err, actor) {
+            if (err) return res.status(400).json(err);
+            if (!actor) return res.status(404).json();
+
+            let arr = remover(actor.movies, req.params.mId);
+
+            Actor.updateOne({_id:req.params.aId},{$set:{'movies':arr}},function(err,actor){
+                if(err) return res.status(405).json(err);
+                console.log('Done!');
+            })
+            res.json(actor);
+        });
     }
 };
+
+function remover(arr,str){
+    let count = arr.length;
+    for(let i=0;i<count;i++){
+        if(arr[i] == str){ // assume there is no same movie name in movies of actor.
+            arr.splice(i,1);
+            break;
+        }
+    }
+    return arr;
+}

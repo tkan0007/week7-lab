@@ -38,9 +38,11 @@ app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
 app.delete('/actors/:id', actors.deleteOne);
+app.put('/actors/:aId/:mId',actors.removeMovie);
 
 //Movie RESTFul  endpoints
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);
 app.put('/movies/:id', movies.updateOne);
+app.delete('/movies/:id', movies.deleteOne); // lab task1
