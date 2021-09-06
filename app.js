@@ -5,8 +5,8 @@ const morgan = require("morgan");
 const ejs = require("ejs");
 
 //models <--  No need?
-const Actor = require('./models/actor');
-const Movie = require('./models/movie');
+//const Actor = require('./models/actor');
+//const Movie = require('./models/movie');
 
 //router
 const actors = require('./routers/actor');
