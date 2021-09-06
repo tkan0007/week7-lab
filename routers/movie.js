@@ -43,4 +43,53 @@ module.exports = {
             res.json();
         });
     },
+
+    /* lab task 4 */
+
+    removeActor: function(req,res){
+        Actor.findOne({ _id: req.params.mId }, function (err, actor) {
+            if (err) return res.status(400).json(err);
+            if (!actor) return res.status(404).json();
+
+            let arr = remover(movie.actors, req.params.aId);
+
+            Actor.updateOne({_id:req.params.mId},{$set:{'actors':arr}},function(err,movie){
+                if(err) return res.status(405).json(err);
+                console.log('Done!');
+            })
+            res.json(movie);
+        });
+    },
+
+    /* lab task 5 */
+
+    addActor: function (req, res) {
+        Movie.findOne({ _id: req.params.id }, function (err, movie) {
+            if (err) return res.status(400).json(err);
+            if (!movie) return res.status(404).json();
+
+            Actor.findOne({ _id: req.body.id }, function (err, actor) {
+                if (err) return res.status(400).json(err);
+                if (!actor) return res.status(404).json();
+
+                movie.actors.push(actor._id);
+                movie.save(function (err) {
+                    if (err) return res.status(500).json(err);
+
+                    res.json(movie);
+                });
+            })
+        });
+    }
 };
+
+function remover(arr,str){
+    let count = arr.length;
+    for(let i=0;i<count;i++){
+        if(arr[i] == str){ // assume there is no same movie name in movies of actor.
+            arr.splice(i,1);
+            break;
+        }
+    }
+    return arr;
+}
