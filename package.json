@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/tkan0007/week7-lab/issues"
   },
-  "homepage": "https://github.com/tkan0007/week7-lab#readme"
+  "homepage": "https://github.com/tkan0007/week7-lab#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mogoose": "^0.0.1-security",
+    "morgan": "^1.10.0"
+  }
 }
