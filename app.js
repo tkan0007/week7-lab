@@ -5,5 +5,7 @@ const morgan = require("morgan");
 const ejs = require("ejs");
 
 //models
-const Actor = require('./models/actors');
+const Actor = require('./models/actor');
 const Movie = require('./models/movie');
+
+
