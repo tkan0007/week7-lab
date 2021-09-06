@@ -41,6 +41,7 @@ app.delete('/actors/:id', actors.deleteOne);
 app.put('/actors/:aId/:mId',actors.removeMovie); // lab task 3
 
 //Movie RESTFul  endpoints
+app.delete('/movies/deleteInRange',movies.deleteInRange); // lab task 9 <-- change the order of end point (it this proper solution?)
 app.get('/movies', movies.getAll);
 app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);
@@ -48,4 +49,5 @@ app.put('/movies/:id', movies.updateOne);
 app.delete('/movies/:id', movies.deleteOne); // lab task1
 app.put('/movies/:mId/:aId',movies.removeActor); // lab task 4
 app.post('/movies/:id/actors', movies.addActor); // lab task 5
-app.get('/movies/getInRange/:y1/:y2',movies.getInRange) // lab task 6
+app.get('/movies/getInRange/:y1/:y2',movies.getInRange); // lab task 6
+app.delete('/movies/deleteInRange',movies.deleteInRange); // lab task 9

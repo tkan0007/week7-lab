@@ -6,7 +6,7 @@ var Movie = require('../models/movie');
 module.exports = {
     getAll: function (req, res) {
         Movie.find()
-        .populate('actors')
+        .populate('actors') // lab task 8
         .exec(function (err, movies) {
             if (err) return res.status(400).json(err);
             res.json(movies);
@@ -91,7 +91,27 @@ module.exports = {
             if (err) return res.status(400).json(err);
             res.json(movies);
         });
-    }
+    },
+
+    /* lab task 9 */
+
+    deleteInRange: function (req, res) {
+        let sYear = req.body.y1;
+        let eYear = req.body.y2;
+
+        if(req.body.y1 > req.body.y2){
+            sYear = req.body.y2;
+            eYear = req.body.y1;
+        }else if(req.body.y1 == req.body.y2){
+            return res.status(400).json(err);
+        }
+
+        Movie.remove({year:{$gte:sYear,$lte:eYear}}, function (err) {
+            if (err) return res.status(400).json(err);
+
+            res.json();
+        });
+    },
 };
 
 function remover(arr,str){

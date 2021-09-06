@@ -6,7 +6,7 @@ const Movie = require('../models/movie');
 module.exports = {
 
     getAll: function (req, res) {
-        Actor.find()
+        Actor.find() // lab task 7
         .populate('movies') // to show the movie detail
         .exec(function (err, actors) {
             if (err) {
