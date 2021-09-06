@@ -5,7 +5,9 @@ var Movie = require('../models/movie');
 
 module.exports = {
     getAll: function (req, res) {
-        Movie.find(function (err, movies) {
+        Movie.find()
+        .populate('actors')
+        .exec(function (err, movies) {
             if (err) return res.status(400).json(err);
             res.json(movies);
         });
@@ -85,7 +87,6 @@ module.exports = {
     /* lab task 6 */
 
     getInRange: function(req, res){
-        console.log(req.params.y2);
         Movie.find({year:{$gte:req.params.y2, $lte:req.params.y1}},function (err, movies) {
             if (err) return res.status(400).json(err);
             res.json(movies);

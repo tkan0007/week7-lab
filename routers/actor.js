@@ -6,7 +6,9 @@ const Movie = require('../models/movie');
 module.exports = {
 
     getAll: function (req, res) {
-        Actor.find(function (err, actors) {
+        Actor.find()
+        .populate('movies') // to show the movie detail
+        .exec(function (err, actors) {
             if (err) {
                 return res.status(404).json(err);
             } else {
