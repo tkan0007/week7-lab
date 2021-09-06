@@ -31,7 +31,7 @@ mongoose.connect('mongodb://localhost:27017/movies', function (err) {
 
 //Configuration Endpoints
 
-//Movie RESTFul  endpoints
+//Actor RESTFul  endpoints
 app.get('/actors', actors.getAll);
 app.post('/actors', actors.createOne);
 app.get('/actors/:id', actors.getOne);

@@ -1,6 +1,8 @@
+const mongoose = require('mongoose');
+
 var Actor = require('../models/actor');
 var Movie = require('../models/movie');
-const mongoose = require('mongoose');
+
 module.exports = {
     getAll: function (req, res) {
         Movie.find(function (err, movies) {
