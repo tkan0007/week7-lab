@@ -49,13 +49,13 @@ module.exports = {
     /* lab task 4 */
 
     removeActor: function(req,res){
-        Actor.findOne({ _id: req.params.mId }, function (err, actor) {
+        Movie.findOne({ _id: req.params.mId }, function (err, movie) {
             if (err) return res.status(400).json(err);
-            if (!actor) return res.status(404).json();
+            if (!movie) return res.status(404).json();
 
             let arr = remover(movie.actors, req.params.aId);
 
-            Actor.updateOne({_id:req.params.mId},{$set:{'actors':arr}},function(err,movie){
+            Movie.updateOne({_id:req.params.mId},{$set:{'actors':arr}},function(err,movie){
                 if(err) return res.status(405).json(err);
                 console.log('Done!');
             })
@@ -116,6 +116,7 @@ module.exports = {
 
 function remover(arr,str){
     let count = arr.length;
+    console.log(str);
     for(let i=0;i<count;i++){
         if(arr[i] == str){ // assume there is no same movie name in movies of actor.
             arr.splice(i,1);
