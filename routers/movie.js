@@ -80,6 +80,16 @@ module.exports = {
                 });
             })
         });
+    },
+
+    /* lab task 6 */
+
+    getInRange: function(req, res){
+        console.log(req.params.y2);
+        Movie.find({year:{$gte:req.params.y2, $lte:req.params.y1}},function (err, movies) {
+            if (err) return res.status(400).json(err);
+            res.json(movies);
+        });
     }
 };
 
