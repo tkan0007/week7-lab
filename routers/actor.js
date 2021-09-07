@@ -100,7 +100,29 @@ module.exports = {
         */
 
         /* lab task 2 */
-        // does it mean delete the all movies related to the actor?
+    removeActorWithMovie: function(req,res){
+        Actor.findOne({_id:req.params.id},function(err,actor){
+            if(err) return res.status(400).json(err);
+            if(!actor) return res.status(404).json();
+
+            let arr = actor.movies;
+
+            for(let i = 0; i<arr.length;i++){
+                Movie.remove({_id:arr[i]},function(err,movie){
+                    if(err) return res.status(400).json(err);
+                    if(!movie) return res.status(404).json();
+
+                    console.log("Delete: "+arr[i]);
+                })
+            }
+
+            Actor.remove({_id:req.params.id},function(err,actor){
+                res.json();
+            })
+
+            console.log('Done!');
+        })
+    },
 
         /* lab task 3 */
 
