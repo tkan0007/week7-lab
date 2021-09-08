@@ -102,8 +102,6 @@ module.exports = {
         if(req.body.y1 > req.body.y2){
             sYear = req.body.y2;
             eYear = req.body.y1;
-        }else if(req.body.y1 == req.body.y2){
-            return res.status(400).json(err);
         }
 
         Movie.remove({year:{$gte:sYear,$lte:eYear}}, function (err) {
