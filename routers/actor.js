@@ -116,8 +116,18 @@ module.exports = {
             })
             res.json(actor);
         });
+    },
+
+    /* Extra task */
+    addBoYActor: function(req,res){
+        Actor.updateMany({"name":/^S/},{$inc:{bYear:req.body.incYear}},function(err,actor){
+            if(err) return res.status(400).json(err);
+            if(!actor) return res.status(404).json
+
+            res.json(actor);
+        })
     }
-};
+}
 
 function remover(arr,str){
     let count = arr.length;

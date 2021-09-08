@@ -34,11 +34,12 @@ mongoose.connect('mongodb://localhost:27017/movies', function (err) {
 //Actor RESTFul  endpoints
 app.get('/actors', actors.getAll); // lab task 7
 app.post('/actors', actors.createOne);
+app.put('/actors/addBoYActor', actors.addBoYActor); // extra task
 app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
 app.delete('/actors/movies/:id', actors.deleteOne);
-app.delete('/actors/:id/movies',actors.removeActorWithMovie)// lab task 2
+app.delete('/actors/:id/movies',actors.removeActorWithMovie);// lab task 2
 app.put('/actors/:aId/:mId',actors.removeMovie); // lab task 3
 
 //Movie RESTFul  endpoints
