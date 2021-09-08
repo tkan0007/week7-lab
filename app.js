@@ -32,13 +32,13 @@ mongoose.connect('mongodb://localhost:27017/movies', function (err) {
 //Configuration Endpoints
 
 //Actor RESTFul  endpoints
-app.get('/actors', actors.getAll);
+app.get('/actors', actors.getAll); // lab task 7
 app.post('/actors', actors.createOne);
 app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);
 app.post('/actors/:id/movies', actors.addMovie);
 app.delete('/actors/movies/:id', actors.deleteOne);
-app.delete('/actors/:id/movies',actors.removeActorWithMovie)// lat task 2
+app.delete('/actors/:id/movies',actors.removeActorWithMovie)// lab task 2
 app.put('/actors/:aId/:mId',actors.removeMovie); // lab task 3
 
 //Movie RESTFul  endpoints
@@ -48,7 +48,7 @@ app.post('/movies', movies.createOne);
 app.get('/movies/:id', movies.getOne);
 app.put('/movies/:id', movies.updateOne);
 app.delete('/movies/:id', movies.deleteOne); // lab task1
+app.put('/movies/:id/actors', movies.addActor); // lab task 5
 app.put('/movies/:mId/:aId',movies.removeActor); // lab task 4
-app.post('/movies/:id/actors', movies.addActor); // lab task 5
 app.get('/movies/getInRange/:y1/:y2',movies.getInRange); // lab task 6
 app.delete('/movies/deleteInRange',movies.deleteInRange); // lab task 9

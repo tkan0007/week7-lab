@@ -76,29 +76,6 @@ module.exports = {
         });
     },
 
-            // why it does not work?
-        /*
-            addMovie: function (req, res) {
-            Actor.findOne({ _id: req.params.id })
-            .populate('movies)
-            .exec(function (err, actor) {
-            if (err) return res.status(400).json(err);
-            if (!actor) return res.status(404).json();
-
-            Movie.findOne({ _id: req.body.id }, function (err, movie) {
-                if (err) return res.status(400).json(err);
-                if (!movie) return res.status(404).json();
-
-                actor.movies.push(movie._id);
-                actor.save(function (err) {
-                    if (err) return res.status(500).json(err);
-
-                    res.json(actor);
-                });
-            })
-        });
-        */
-
         /* lab task 2 */
     removeActorWithMovie: function(req,res){
         Actor.findOne({_id:req.params.id},function(err,actor){
