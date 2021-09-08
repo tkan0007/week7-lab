@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const actor = require('../models/actor');
 
 var Actor = require('../models/actor');
 var Movie = require('../models/movie');
